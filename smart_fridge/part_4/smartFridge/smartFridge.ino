@@ -1,7 +1,7 @@
+/**
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
-
-#include "TinyDHT.h"
+#include <DHT.h>
 
 // Set the port for the web server
 ESP8266WebServer server(80);
@@ -34,6 +34,7 @@ void setup() {
   Serial.begin(9600); 
   // Connect to wifi 
   WiFi.begin(ssid, password);
+  Serial.println("DHT begin");
   dht.begin();
 
   // put your setup code here, to run once:
@@ -43,12 +44,10 @@ void setup() {
 
 
   // Wait for connection
-  /**
   while (WiFi.status() != WL_CONNECTED) {
       Serial.println("Watiing to connect...");
       delay(500);
   }
-  */
 
 
   Serial.print("IP address: ");
@@ -57,7 +56,6 @@ void setup() {
   server.on("/", get_index);
   server.begin();
   Serial.println("Listening on port 80");
-
 
 }
 
@@ -119,5 +117,5 @@ void readTempHum() {
     Serial.print(" hum: ");
     Serial.print(hum);
     Serial.println(" ");
-
 }
+**/
