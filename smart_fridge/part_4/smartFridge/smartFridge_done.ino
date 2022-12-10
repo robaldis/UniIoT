@@ -42,8 +42,15 @@ int humidity = 0;
 // Initialise the DHT11 component
 DHT dht(temp_hum_pin, DHT11);
 
+String hostname = "esp32nodetemperature";
+
+
 // put your setup code here, to run once:
 void setup() {
+  WiFi.mode(WIFI_STA);
+
+  WiFi.config(INADDR_NONE, INADDR_NONE, INADDR_NONE, INADDR_NONE);
+  WiFi.setHostname(hostname.c_str());
 
   //Connect to the WiFi network
   WiFi.begin(ssid, password);  
